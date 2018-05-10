@@ -6,12 +6,12 @@ import android.os.AsyncTask;
 import com.google.firebase.auth.FirebaseAuth;
 
 /**
- * Created by 남대영 on 2018-05-05.
+ * 모든 인증모듈의 상위 클래스
+ * @author 남대영
  */
-
 public abstract class AuthenticationModule extends AsyncTask<String, Void, Boolean> implements IAuthentication {
 
-    protected boolean authenticated = false;
+    public static boolean authenticated = false;
     protected ProgressDialog dialog;
 
     public FirebaseAuth getAuth(){
@@ -20,7 +20,7 @@ public abstract class AuthenticationModule extends AsyncTask<String, Void, Boole
 
     @Override
     public boolean isAuthenticated() {
-        return this.authenticated;
+        return authenticated;
     }
 
 }

@@ -3,9 +3,9 @@ package com.auth.untitledappauth.activityutils;
 import android.content.Context;
 
 /**
- * Created by 남대영 on 2018-05-07.
+ * AsyncTask에서 Activity변경을 위한 CallBack 인터페이스
+ * @author 남대영
  */
-
 public interface TaskCallback {
     public void taskFinish(boolean success);
     public Context getContext();

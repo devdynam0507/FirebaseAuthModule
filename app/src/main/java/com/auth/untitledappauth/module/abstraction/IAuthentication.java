@@ -1,9 +1,9 @@
 package com.auth.untitledappauth.module.abstraction;
 
 /**
- * Created by 남대영 on 2018-05-05.
+ * 인증 모듈 인터페이스
+ * @author 남대영
  */
-
 public interface IAuthentication {
 
     public boolean isAuthenticated(); /** 이미 인증된 계정인지 확인합니다. */
