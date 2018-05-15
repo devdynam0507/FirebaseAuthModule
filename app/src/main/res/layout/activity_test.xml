@@ -4,56 +4,45 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.auth.untitledappauth.MainActivity">
+    tools:context="com.auth.untitledappauth.TestActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/mainTextView"
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/test_encrypt_edit"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:text="---"
-            android:textSize="20dp"
             android:layout_gravity="center"/>
-        <TextView
-            android:id="@+id/mainCardView"
-            android:layout_width="wrap_content"
+
+        <EditText
+            android:id="@+id/test_decrypt_edit"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:text="---"
-            android:textSize="20dp"
             android:layout_gravity="center"/>
 
         <TextView
-            android:id="@+id/mainPhonView"
+            android:id="@+id/test_encrypt_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="---"
-            android:textSize="20dp"
+            android:text="Encrypt"
             android:layout_gravity="center"/>
 
         <Button
-            android:id="@+id/logoutButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="로그아웃"
-            android:layout_gravity="center"/>
-
-        <Button
-            android:id="@+id/exampleReserveButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="예약 예시"
-            android:layout_gravity="center"/>
-
-        <Button
-            android:id="@+id/move_test"
+            android:id="@+id/test_encrypt_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="암호화 테스트 액티비티"/>
+            android:text="Run Encrypting"/>
+
+        <Button
+            android:id="@+id/test_decrypt_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Run Decrypting"/>
 
     </LinearLayout>
 

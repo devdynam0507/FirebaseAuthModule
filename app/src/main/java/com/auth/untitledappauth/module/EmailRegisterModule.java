@@ -7,6 +7,7 @@ import com.auth.untitledappauth.activityutils.TaskCallback;
 import com.auth.untitledappauth.module.abstraction.AuthenticationModule;
 import com.auth.untitledappauth.module.db.FireBaseDBManager;
 import com.auth.untitledappauth.module.db.Session;
+import com.auth.untitledappauth.util.CryptoUtil;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -63,13 +64,16 @@ public class EmailRegisterModule extends AuthenticationModule {
                     getAuth().signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
-                            DatabaseReference userDB = FireBaseDBManager.manager().getReference("profile", EmailRegisterModule.this);
-                            userDB.child("card").setValue(card); //카드 블링키를 user db에 저장합니다.
-                            userDB.child("phone").setValue(phoneNumber); //휴대폰 번호를 user db에 저장합니다.
-                            Session.cardKey = card;
-                            Session.phone = phoneNumber;
+                            try {
+                                DatabaseReference userDB = FireBaseDBManager.manager().getReference("profile", EmailRegisterModule.this);
+                                CryptoUtil crypto = new CryptoUtil(email);
+                                userDB.child("card").setValue(crypto.aesEncode(card)); //카드 블링키를 user db에 저장합니다.
+                                userDB.child("phone").setValue(phoneNumber); //휴대폰 번호를 user db에 저장합니다.
+                                Session.getSession().setCardKey(card);
+                                Session.getSession().setPhoneNumber(phoneNumber);
+                            }catch (Exception e){ e.printStackTrace(); }
                         }
-                    });//회원가입 성공시 로그인을 합니다.
+                    });
                     authenticated = true;
                 }
                 dialog.dismiss();

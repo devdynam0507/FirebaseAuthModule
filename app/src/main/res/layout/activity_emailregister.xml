@@ -27,11 +27,32 @@
             android:inputType="textEmailAddress"
             android:layout_gravity="center"/>
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="67dp">
+
+            <EditText
+                android:id="@+id/phoneNumber"
+                android:layout_width="168dp"
+                android:layout_height="wrap_content"
+                android:hint="핸드폰 번호"
+                android:layout_gravity="center"/>
+
+            <Button
+                android:id="@+id/phoneValid"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text="인증하기"/>
+
+        </LinearLayout>
+
         <EditText
-            android:id="@+id/phoneNumber"
+            android:id="@+id/inputValid"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:hint="핸드폰 번호"
+            android:hint="인증번호"
             android:layout_gravity="center"/>
 
         <EditText

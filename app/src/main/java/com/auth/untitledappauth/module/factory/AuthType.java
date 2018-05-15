@@ -6,6 +6,6 @@ package com.auth.untitledappauth.module.factory;
 
 public enum AuthType {
 
-    LOGIN, EMAIL_REGISTER
+    LOGIN, EMAIL_REGISTER, PHONE_VALID
 
 }

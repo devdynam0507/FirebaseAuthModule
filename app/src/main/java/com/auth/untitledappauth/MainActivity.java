@@ -4,8 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.auth.untitledappauth.activityutils.InitializeBase;
@@ -28,22 +28,42 @@ public class MainActivity extends AppCompatActivity implements TaskCallback {
             finish();
         }else {
             ((TextView) findViewById(R.id.mainTextView)).setText(FirebaseAuth.getInstance().getCurrentUser().getEmail() + " 님 환영합니다");
-            if(Session.phone == null || Session.cardKey == null){ /* Session값이 null일시 db에서 정보를 받아옵니다. */
+            if(Session.getSession().getPhoneNumber() == null || Session.getSession().getCardKey() == null){ /* Session값이 null일시 db에서 정보를 받아옵니다. */
                 new InitializeBase(this).execute();
             }else {
-                ((TextView) findViewById(R.id.mainCardView)).setText("블링키: " + Session.cardKey);
-                ((TextView) findViewById(R.id.mainPhonView)).setText("전화번호: " + Session.phone);
+                ((TextView) findViewById(R.id.mainCardView)).setText("블링키: " + Session.getSession().getCardKey());
+                ((TextView) findViewById(R.id.mainPhonView)).setText("전화번호: " + Session.getSession().getPhoneNumber());
             }
 
-            ((Button) findViewById(R.id.logoutButton)).setOnClickListener(new View.OnClickListener(){
+            findViewById(R.id.logoutButton).setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v) {
                     FirebaseAuth.getInstance().signOut();
-                    Session.phone = "";
-                    Session.cardKey = "";
+                    Session.getSession().clear();
                     Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                     startActivity(intent);
                     finish();
+                }
+            });
+
+            findViewById(R.id.exampleReserveButton).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String date = "2018-5-7-12:10";
+                    String name = "가게A";
+                    String price = "1000";
+                    String numOfPeople = "4";
+
+                    Session.getSession().addReserves(MainActivity.this, date, name, numOfPeople, price);
+                    Log.d("[Fire-Base]", "Input reserve example data");
+                }
+            });
+
+            findViewById(R.id.move_test).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(MainActivity.this, TestActivity.class);
+                    startActivity(intent);
                 }
             });
         }
@@ -52,8 +72,8 @@ public class MainActivity extends AppCompatActivity implements TaskCallback {
     @Override
     public void taskFinish(boolean success) {
         if(success){
-            ((TextView) findViewById(R.id.mainCardView)).setText(Session.cardKey);
-            ((TextView) findViewById(R.id.mainPhonView)).setText(Session.phone);
+            ((TextView) findViewById(R.id.mainCardView)).setText(Session.getSession().getCardKey());
+            ((TextView) findViewById(R.id.mainPhonView)).setText(Session.getSession().getPhoneNumber());
         }
     }
 

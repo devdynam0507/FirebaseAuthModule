@@ -30,7 +30,7 @@ public class FireBaseDBManager {
         return null;
     }
 
-    public DatabaseReference getReference(DataReference reference)
+    public DatabaseReference getReference(DataReferenceType reference)
     {
         return FirebaseDatabase.getInstance().getReference().child(reference.getName());
     }

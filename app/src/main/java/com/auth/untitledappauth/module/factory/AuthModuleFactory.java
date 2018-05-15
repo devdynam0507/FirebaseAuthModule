@@ -3,6 +3,7 @@ package com.auth.untitledappauth.module.factory;
 import com.auth.untitledappauth.activityutils.TaskCallback;
 import com.auth.untitledappauth.module.LoginModule;
 import com.auth.untitledappauth.module.EmailRegisterModule;
+import com.auth.untitledappauth.module.PhoneValidModule;
 import com.auth.untitledappauth.module.abstraction.AuthenticationModule;
 
 /**
