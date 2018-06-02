@@ -19,17 +19,17 @@ AuthModuleFactory.getFactory().runAuthModule(EmailRegisterActivity.this, AuthTyp
 
 
 ## 라이브러리
-/**
+```groovy
   	allprojects {
 		repositories {
 			...
 			maven { url 'https://jitpack.io' }
 		}
 	}
-*/
+```
 
-/**
+```groovy
   	dependencies {
 	        implementation 'com.github.devdynam0507:FirebaseAuthModule:1.1'
 	}
-*/
+```
