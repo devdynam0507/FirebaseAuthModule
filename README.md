@@ -17,3 +17,19 @@ AuthModuleFactory.getFactory().runAuthModule(EmailRegisterActivity.this, AuthTyp
 *TaskCallback interface를 상속받고 TaskCallback함수들을 정의해주셔야 합니다.*
 *모듈을 추가하고싶을땐 AuthenticationModule클래스를 상속받고 정의해주신뒤 AuthModuleFactory, AuthType을 수정하시면 됩니다.*
 
+
+## 라이브러리
+/**
+  	allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+*/
+
+/**
+  	dependencies {
+	        implementation 'com.github.devdynam0507:FirebaseAuthModule:1.1'
+	}
+*/
