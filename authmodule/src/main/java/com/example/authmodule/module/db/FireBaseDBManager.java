@@ -1,6 +1,6 @@
-package com.auth.untitledappauth.module.db;
+package com.example.authmodule.module.db;
 
-import com.auth.untitledappauth.module.abstraction.AuthenticationModule;
+import com.example.authmodule.module.abstraction.AuthenticationModule;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 

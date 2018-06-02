@@ -1,4 +1,4 @@
-package com.auth.untitledappauth.activityutils;
+package com.example.authmodule.module.activityutils;
 
 import android.content.Context;
 

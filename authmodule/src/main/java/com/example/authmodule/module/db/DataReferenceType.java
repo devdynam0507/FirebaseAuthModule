@@ -1,4 +1,4 @@
-package com.auth.untitledappauth.module.db;
+package com.example.authmodule.module.db;
 
 /**
  * Created by 남대영 on 2018-05-07.

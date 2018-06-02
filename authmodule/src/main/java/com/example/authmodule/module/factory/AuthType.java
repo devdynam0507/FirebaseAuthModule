@@ -1,4 +1,4 @@
-package com.auth.untitledappauth.module.factory;
+package com.example.authmodule.module.factory;
 
 /**
  * Created by 남대영 on 2018-05-06.

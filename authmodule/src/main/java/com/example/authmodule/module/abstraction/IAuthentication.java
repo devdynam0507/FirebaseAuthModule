@@ -1,4 +1,4 @@
-package com.auth.untitledappauth.module.abstraction;
+package com.example.authmodule.module.abstraction;
 
 /**
  * 인증 모듈 인터페이스

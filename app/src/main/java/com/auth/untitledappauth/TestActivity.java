@@ -1,13 +1,12 @@
 package com.auth.untitledappauth;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.auth.untitledappauth.util.CryptoUtil;
+import com.example.authmodule.module.util.CryptoUtil;
 
 public class TestActivity extends AppCompatActivity {
 
@@ -21,14 +20,13 @@ public class TestActivity extends AppCompatActivity {
         findViewById(R.id.test_encrypt_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String encrpytMessage = ((EditText) findViewById(R.id.test_encrypt_edit)).getText().toString();
-                if(encrpytMessage.equals("")) return;
+                String encryptMessage = ((EditText) findViewById(R.id.test_encrypt_edit)).getText().toString();
+                if(encryptMessage.equals("")) return;
 
                 try {
                     CryptoUtil cryptoUtil = new CryptoUtil(key);
 
-                    ((TextView) findViewById(R.id.test_encrypt_view)).setText(cryptoUtil.aesEncode(encrpytMessage));
-                    Log.d("[ CRYPTO ]", "RUNNING");
+                    ((TextView) findViewById(R.id.test_encrypt_view)).setText(cryptoUtil.aesEncode(encryptMessage));
                 }catch (Exception e){
                     e.printStackTrace();
                 }

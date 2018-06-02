@@ -1,8 +1,8 @@
-package com.auth.untitledappauth.module.db;
+package com.example.authmodule.module.db;
 
 import android.content.Context;
 
-import com.auth.untitledappauth.module.db.request.ReserveRequestBuilder;
+import com.example.authmodule.module.db.request.ReserveRequestBuilder;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 

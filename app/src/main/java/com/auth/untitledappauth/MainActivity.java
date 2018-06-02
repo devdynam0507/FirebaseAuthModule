@@ -8,9 +8,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
-import com.auth.untitledappauth.activityutils.InitializeBase;
-import com.auth.untitledappauth.activityutils.TaskCallback;
-import com.auth.untitledappauth.module.db.Session;
+import com.example.authmodule.module.activityutils.InitializeBase;
+import com.example.authmodule.module.activityutils.TaskCallback;
+import com.example.authmodule.module.db.Session;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity implements TaskCallback {

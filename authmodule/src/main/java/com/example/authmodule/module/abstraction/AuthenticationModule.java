@@ -1,4 +1,4 @@
-package com.auth.untitledappauth.module.abstraction;
+package com.example.authmodule.module.abstraction;
 
 import android.app.ProgressDialog;
 import android.os.AsyncTask;

@@ -4,20 +4,23 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
-import com.auth.untitledappauth.activityutils.TaskCallback;
-import com.auth.untitledappauth.module.PhoneValidModule;
-import com.auth.untitledappauth.module.factory.AuthModuleFactory;
-import com.auth.untitledappauth.module.factory.AuthType;
+import com.example.authmodule.module.PhoneValidModule;
+import com.example.authmodule.module.abstraction.customer.PhoneValidListener;
+import com.example.authmodule.module.abstraction.handler.AuthListenerHandler;
+import com.example.authmodule.module.activityutils.TaskCallback;
+import com.example.authmodule.module.factory.AuthModuleFactory;
+import com.example.authmodule.module.factory.AuthType;
 
-public class EmailRegisterActivity extends AppCompatActivity implements TaskCallback {
+public class EmailRegisterActivity extends AppCompatActivity implements TaskCallback, PhoneValidListener {
 
     private boolean validPhone = false;
+    private String phoneNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,15 +32,16 @@ public class EmailRegisterActivity extends AppCompatActivity implements TaskCall
             public void onClick(View v) {
                 String phoneNumber = ((EditText) findViewById(R.id.phoneNumber)).getText().toString();
                 if(phoneNumber == null || phoneNumber.equals("")) return;
-                PhoneValidModule module = new PhoneValidModule(EmailRegisterActivity.this);
-                module.authenticating(phoneNumber);
+                PhoneValidModule module = new PhoneValidModule();
+                module.registerPhoneValidListener(getListener());
+                AuthListenerHandler.getHandler().registerListener(module).run(phoneNumber,(Activity) getContext());
             }
         });
 
         findViewById(R.id.registerClearButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(getValidPhone()) {
+                if(validPhone) {
                     String email = ((EditText) findViewById(R.id.registerEmailInput)).getText().toString();
                     String password = ((EditText) findViewById(R.id.registerPasswordInput)).getText().toString();
                     String phone = ((EditText) findViewById(R.id.phoneNumber)).getText().toString();
@@ -94,7 +98,23 @@ public class EmailRegisterActivity extends AppCompatActivity implements TaskCall
         }
     }
 
-    public boolean getValidPhone() { return this.validPhone; }
-    public void setValidPhone(boolean valid) { this.validPhone = valid; }
+    public PhoneValidListener getListener() { return this; }
 
+    @Override
+    public void authPhoneListener(String phoneNumber, boolean valid) {
+        this.validPhone = valid;
+        this.phoneNumber = phoneNumber;
+        if(!this.validPhone) {
+            android.app.AlertDialog.Builder alert = new android.app.AlertDialog.Builder(this);
+            alert.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+            alert.setMessage("인증에 실패하였습니다.");
+            alert.show();
+            return;
+        }else this.setVerifyCode(phoneNumber);
+    }
 }

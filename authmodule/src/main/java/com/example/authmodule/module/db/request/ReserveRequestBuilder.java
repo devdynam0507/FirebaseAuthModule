@@ -1,13 +1,13 @@
-package com.auth.untitledappauth.module.db.request;
+package com.example.authmodule.module.db.request;
 
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 
-import com.auth.untitledappauth.module.db.DataReferenceType;
-import com.auth.untitledappauth.module.db.FireBaseDBManager;
-import com.auth.untitledappauth.module.db.Session;
-import com.auth.untitledappauth.module.db.model.Reserve;
+import com.example.authmodule.module.db.DataReferenceType;
+import com.example.authmodule.module.db.FireBaseDBManager;
+import com.example.authmodule.module.db.Session;
+import com.example.authmodule.module.db.model.Reserve;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;

@@ -1,6 +1,4 @@
-package com.auth.untitledappauth.module.db.model;
-
-import java.util.List;
+package com.example.authmodule.module.db.model;
 
 /**
  * Created by 남대영 on 2018-05-13.

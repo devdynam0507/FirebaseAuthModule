@@ -1,4 +1,4 @@
-package com.auth.untitledappauth.module.db.model;
+package com.example.authmodule.module.db.model;
 
 import java.util.List;
 

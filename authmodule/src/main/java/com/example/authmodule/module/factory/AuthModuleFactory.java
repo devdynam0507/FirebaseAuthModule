@@ -1,10 +1,9 @@
-package com.auth.untitledappauth.module.factory;
+package com.example.authmodule.module.factory;
 
-import com.auth.untitledappauth.activityutils.TaskCallback;
-import com.auth.untitledappauth.module.LoginModule;
-import com.auth.untitledappauth.module.EmailRegisterModule;
-import com.auth.untitledappauth.module.PhoneValidModule;
-import com.auth.untitledappauth.module.abstraction.AuthenticationModule;
+import com.example.authmodule.module.EmailRegisterModule;
+import com.example.authmodule.module.LoginModule;
+import com.example.authmodule.module.abstraction.AuthenticationModule;
+import com.example.authmodule.module.activityutils.TaskCallback;
 
 /**
  * Created by 남대영 on 2018-05-06.

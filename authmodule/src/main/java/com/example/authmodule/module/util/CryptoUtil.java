@@ -1,4 +1,4 @@
-package com.auth.untitledappauth.util;
+package com.example.authmodule.module.util;
 
 import android.util.Base64;
 

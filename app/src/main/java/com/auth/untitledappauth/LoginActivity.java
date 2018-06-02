@@ -10,9 +10,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.auth.untitledappauth.activityutils.TaskCallback;
-import com.auth.untitledappauth.module.factory.AuthModuleFactory;
-import com.auth.untitledappauth.module.factory.AuthType;
+import com.example.authmodule.module.activityutils.TaskCallback;
+import com.example.authmodule.module.factory.AuthModuleFactory;
+import com.example.authmodule.module.factory.AuthType;
 
 public class LoginActivity extends AppCompatActivity implements TaskCallback {
 

@@ -1,13 +1,13 @@
-package com.auth.untitledappauth.module;
+package com.example.authmodule.module;
 
 import android.app.ProgressDialog;
 import android.support.annotation.NonNull;
 
-import com.auth.untitledappauth.activityutils.TaskCallback;
-import com.auth.untitledappauth.module.abstraction.AuthenticationModule;
-import com.auth.untitledappauth.module.db.FireBaseDBManager;
-import com.auth.untitledappauth.module.db.Session;
-import com.auth.untitledappauth.util.CryptoUtil;
+import com.example.authmodule.module.abstraction.AuthenticationModule;
+import com.example.authmodule.module.activityutils.TaskCallback;
+import com.example.authmodule.module.db.FireBaseDBManager;
+import com.example.authmodule.module.db.Session;
+import com.example.authmodule.module.util.CryptoUtil;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
