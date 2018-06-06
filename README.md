@@ -1,5 +1,5 @@
-# UntitiedFirebaseAuthModule v2.1
-'Untitled'앱의 Firebase 회원가입 모듈입니다 
+# FirebaseAuthModule v2.1
+Firebase 회원가입 모듈입니다 
 
 ## Untitledapp authentication module usage java example
 ```java
