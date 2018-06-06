@@ -1,4 +1,4 @@
-# UntitiedFirebaseAuthModule v1.15
+# UntitiedFirebaseAuthModule v2.0
 'Untitled'앱의 Firebase 회원가입 모듈입니다 
 
 ## Untitledapp authentication module usage java example
@@ -34,6 +34,6 @@ AuthModuleFactory.getFactory().runAuthModule(EmailRegisterActivity.this, AuthTyp
 
 ```groovy
   	dependencies {
-	        implementation 'com.github.devdynam0507:FirebaseAuthModule:1.1'
+	        implementation 'com.github.devdynam0507:FirebaseAuthModule:2.0'
 	}
 ```
