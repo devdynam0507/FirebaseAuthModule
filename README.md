@@ -1,4 +1,4 @@
-# UntitiedFirebaseAuthModule v1.0
+# UntitiedFirebaseAuthModule v1.15
 'Untitled'앱의 Firebase 회원가입 모듈입니다 
 
 ## Untitledapp authentication module usage java example
@@ -17,6 +17,10 @@ AuthModuleFactory.getFactory().runAuthModule(EmailRegisterActivity.this, AuthTyp
 *TaskCallback interface를 상속받고 TaskCallback함수들을 정의해주셔야 합니다.*
 *모듈을 추가하고싶을땐 AuthenticationModule클래스를 상속받고 정의해주신뒤 AuthModuleFactory, AuthType을 수정하시면 됩니다.*
 
+## Google Firebase Gradle
+```grooby
+    compile 'com.google.firebase:firebase-auth:11.8.0'
+```
 
 ## 라이브러리
 ```groovy
