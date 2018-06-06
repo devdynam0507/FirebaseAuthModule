@@ -34,6 +34,6 @@ AuthModuleFactory.getFactory().runAuthModule(EmailRegisterActivity.this, AuthTyp
 
 ```groovy
   	dependencies {
-	        implementation 'com.github.devdynam0507:FirebaseAuthModule:2.0'
+	        implementation 'com.github.devdynam0507:FirebaseAuthModule:2.1'
 	}
 ```
