@@ -41,7 +41,7 @@ public class EmailRegisterActivity extends AppCompatActivity implements TaskCall
         findViewById(R.id.registerClearButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(validPhone) {
+//                if(validPhone) {
                     String email = ((EditText) findViewById(R.id.registerEmailInput)).getText().toString();
                     String password = ((EditText) findViewById(R.id.registerPasswordInput)).getText().toString();
                     String phone = ((EditText) findViewById(R.id.phoneNumber)).getText().toString();
@@ -50,17 +50,17 @@ public class EmailRegisterActivity extends AppCompatActivity implements TaskCall
                         return;
 
                     AuthModuleFactory.getFactory().runAuthModule(EmailRegisterActivity.this, AuthType.EMAIL_REGISTER, email, password, phone, card);
-                }else {
-                    android.app.AlertDialog.Builder alert = new android.app.AlertDialog.Builder(EmailRegisterActivity.this);
-                    alert.setPositiveButton("확인", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
-                        }
-                    });
-                    alert.setMessage("전화번호 인증을 해주세요.");
-                    alert.show();
-                }
+//                }else {
+//                    android.app.AlertDialog.Builder alert = new android.app.AlertDialog.Builder(EmailRegisterActivity.this);
+//                    alert.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+//                        @Override
+//                        public void onClick(DialogInterface dialog, int which) {
+//                            dialog.dismiss();
+//                        }
+//                    });
+//                    alert.setMessage("전화번호 인증을 해주세요.");
+//                    alert.show();
+//                }
             }
         });
     }

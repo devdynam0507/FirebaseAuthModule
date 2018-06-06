@@ -4,14 +4,10 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 
-import com.example.authmodule.module.db.DataReferenceType;
 import com.example.authmodule.module.db.FireBaseDBManager;
-import com.example.authmodule.module.db.Session;
-import com.example.authmodule.module.db.model.Reserve;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.Map;
 
 /**
  * Created by 남대영 on 2018-05-13.
@@ -69,37 +65,11 @@ public class ReserveRequestBuilder {
 
         @Override
         protected Boolean doInBackground(String... strings) {
-            FireBaseDBManager.manager().getReference(DataReferenceType.RESERVE).addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    for(DataSnapshot snapshot : dataSnapshot.getChildren()){
-                        Reserve reserve = snapshot.getValue(Reserve.class);
-                        System.out.println("[Fire-Base] db-date->" + reserve.getDate() + ",request-date->" + datas[0]);
-                        System.out.println("[Fire-Base] db-name->" + reserve.getName() + ",request-name->" + datas[1]);
-                        System.out.println("[Fire-Base] db-people->" + reserve.getPeople() + ",request-people->" + datas[2]);
-                        System.out.println("[Fire-Base] db-price->" + reserve.getPrice() + ",request-price->" + datas[3]);
-                        if(reserve.getDate().equals(datas[0]) && reserve.getName().equals(datas[1]) &&
-                                reserve.getPeople().equals(datas[2]) && reserve.getPrice().equals(datas[3])){
-                            dialog.dismiss();
-                            return;
-                        }
-                    }
-                    DatabaseReference reference = FireBaseDBManager.manager().getReference(DataReferenceType.RESERVE);
-                    String key = reference.push().getKey();
-                    reference.child(key).child("date").setValue(datas[0]);
-                    reference.child(key).child("name").setValue(datas[1]);
-                    reference.child(key).child("people").setValue(datas[2]);
-                    reference.child(key).child("price").setValue(datas[3]);
-                    Session.getSession().addReserves(key);
-                    Session.getSession().saveReserveDatas();
-                    dialog.dismiss();
-                }
+            FirebaseFirestore firestore = FireBaseDBManager.manager().getFireStore();
+            FireBaseDBManager.FireStoreUtility utility = FireBaseDBManager.manager().getFireStoreUtility(datas);
+            Map<String, Object> dataMap = utility.convertToMap();
 
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                }
-            });
+            dialog.dismiss();
             return true;
         }
 

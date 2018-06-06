@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements TaskCallback {
                     String price = "1000";
                     String numOfPeople = "4";
 
-                    Session.getSession().addReserves(MainActivity.this, date, name, numOfPeople, price);
+                    Session.getSession().addReserves("key1");
                     Log.d("[Fire-Base]", "Input reserve example data");
                 }
             });

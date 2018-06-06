@@ -6,7 +6,7 @@ android {
 
 
     defaultConfig {
-        minSdkVersion 19
+        minSdkVersion 26
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -31,11 +31,4 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-    compile 'com.google.firebase:firebase-auth:11.8.0'
-    compile 'com.google.firebase:firebase-database:11.8.0'
-    compile 'com.google.firebase:firebase-storage:11.8.0'
-    compile 'com.google.firebase:firebase-firestore:11.8.0'
 }
-
-apply plugin: 'com.github.dcendents.android-maven'
-group='com.github.Ndy'

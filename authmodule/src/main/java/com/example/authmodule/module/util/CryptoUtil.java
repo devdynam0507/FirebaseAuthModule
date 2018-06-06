@@ -26,6 +26,11 @@ public class CryptoUtil {
     private Key spec;
 
     public CryptoUtil(String email) throws Exception {
+        if(email.length() < 16) {
+            for(int i = 0; i < 16-email.length()+1; i++) {
+                email += "-";
+            }
+        }
         this.crypto = email.substring(0, 16);
         byte[] keyBytes = new byte[16];
         byte[] b = email.getBytes("UTF-8");

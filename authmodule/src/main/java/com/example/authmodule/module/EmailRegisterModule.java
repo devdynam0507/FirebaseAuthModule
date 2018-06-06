@@ -11,7 +11,11 @@ import com.example.authmodule.module.util.CryptoUtil;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
-import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.ArrayList;
+import java.util.Map;
 
 /**
  * Created by 남대영 on 2018-05-05.
@@ -65,12 +69,16 @@ public class EmailRegisterModule extends AuthenticationModule {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             try {
-                                DatabaseReference userDB = FireBaseDBManager.manager().getReference("profile", EmailRegisterModule.this);
+                                FirebaseFirestore firestore = FireBaseDBManager.manager().getFireStore();
                                 CryptoUtil crypto = new CryptoUtil(email);
-                                userDB.child("card").setValue(crypto.aesEncode(card)); //카드 블링키를 user db에 저장합니다.
-                                userDB.child("phone").setValue(phoneNumber); //휴대폰 번호를 user db에 저장합니다.
+                                Map<String, Object> map = FireBaseDBManager.manager().getFireStoreUtility("card-" + crypto.aesEncode(card),
+                                        "phone-" + phoneNumber)
+                                        .addArrayList("reserves", new String[]{}).convertToMap();
+                                DocumentReference ref = firestore.collection("profile").document(EmailRegisterModule.super.getAuth().getCurrentUser().getUid());
+                                ref.set(map);
                                 Session.getSession().setCardKey(card);
                                 Session.getSession().setPhoneNumber(phoneNumber);
+                                Session.getSession().setReserves(new ArrayList<String>());
                             }catch (Exception e){ e.printStackTrace(); }
                         }
                     });

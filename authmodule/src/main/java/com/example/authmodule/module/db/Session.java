@@ -1,13 +1,19 @@
 package com.example.authmodule.module.db;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 
 import com.example.authmodule.module.db.request.ReserveRequestBuilder;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by 남대영 on 2018-05-07.
@@ -37,7 +43,11 @@ public class Session {
     public String getPhoneNumber() { return this.phone; }
     public List<String> getReserves() { return this.reserves; }
 
-    public void addReserves(String key) { this.reserves.add(key); }
+    public void addReserves(String key)
+    {
+        this.reserves.add(key);
+        this.saveReserveDatas();
+    }
 
     public void addReserves(Context context, String... data)
     {
@@ -49,8 +59,22 @@ public class Session {
     public void saveReserveDatas()
     {
         FirebaseAuth auth = FirebaseAuth.getInstance();
-        DatabaseReference reference = FireBaseDBManager.manager().getReference(DataReferenceType.PROFILE).child(auth.getCurrentUser().getUid());
-        if(this.reserves != null && this.reserves.size() > 0) reference.child("reserve").setValue(this.reserves);
+        FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+
+        if(this.reserves != null && this.reserves.size() > 0) {
+            final DocumentReference ref = firestore.collection("profile").document(auth.getCurrentUser().getUid());
+            ref.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                    if(task.isSuccessful()) {
+                        DocumentSnapshot snapshot = task.getResult();
+                        Map<String, Object> data = snapshot.getData();
+                        data.put("reserves", reserves);
+                        ref.set(data);
+                    }
+                }
+            });
+        }
     }
 
     public void clear()

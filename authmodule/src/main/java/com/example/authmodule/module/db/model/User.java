@@ -29,6 +29,7 @@ public class User {
 
     public void setReserves(List<String> reserves) { this.reserves = reserves; }
     public List<String> getReserves() { return this.reserves; }
+    public void addReserve(String reserve) { this.reserves.add(reserve); }
 
 }
 
