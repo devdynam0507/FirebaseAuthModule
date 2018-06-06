@@ -5,7 +5,6 @@
       <module fileurl="file://$PROJECT_DIR$/UntitledAppAuth.iml" filepath="$PROJECT_DIR$/UntitledAppAuth.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/authmodule/authmodule.iml" filepath="$PROJECT_DIR$/authmodule/authmodule.iml" />
-      <module fileurl="file://$PROJECT_DIR$/authmodule2/authmodule2.iml" filepath="$PROJECT_DIR$/authmodule2/authmodule2.iml" />
     </modules>
   </component>
 </project>
